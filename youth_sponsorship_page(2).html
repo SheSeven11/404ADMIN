@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Become a Sponsor | YOU-TH ARE THE FUTURE</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* LOCKED BRAND COLORS — DO NOT CHANGE */
+    /* Purple: rgb(80,32,96) | Highlight: rgb(112,32,112) | Red: rgb(240,0,0) */
+    --purple: rgb(80,32,96);
+    --red: rgb(255,10,10);
+    --black: #0a0a0a;
+    --white: #f5f5f5;
+    --gray: #c0c0c0;
+    --red-glow: rgba(204,0,0,0.3);
+    --purple-light: rgb(112,32,112);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+
+  .nav-bar { background: rgba(10,0,16,0.95); border-bottom: 2px solid var(--red); padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+  .nav-bar a { color: var(--gray); text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-bar a:hover, .nav-bar a.active { color: var(--red); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+
+  .hero { position: relative; background: linear-gradient(180deg, rgb(40,10,50) 0%, var(--purple) 50%, rgb(40,10,50) 100%); min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px 80px; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% 30%, rgba(204,0,0,0.15) 0%, transparent 70%); pointer-events: none; }
+  .hero-divider { width: min(500px, 90vw); height: 4px; background: linear-gradient(90deg, transparent, var(--red), transparent); margin-bottom: 28px; position: relative; z-index: 2; }
+  .hero-tagline { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(9px, 1.5vw, 13px); letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 16px; position: relative; z-index: 2; text-align: center; }
+  .hero-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 10vw, 96px); letter-spacing: 4px; line-height: 1; margin-bottom: 16px; position: relative; z-index: 2; text-align: center; }
+  .hero-headline span { color: var(--red); }
+  .hero-body { max-width: 680px; font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.75); text-align: center; position: relative; z-index: 2; }
+
+  .section-label {
+    text-shadow: 0 0 12px rgba(255,10,10,0.4);
+    -webkit-font-smoothing: antialiased; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 5px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 6vw, 60px); letter-spacing: 3px; margin-bottom: 24px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* TIERS */
+  .tiers-section { padding: 80px 20px; background: var(--black); text-align: center; }
+  .tiers-header { margin-bottom: 60px; }
+  .tiers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; max-width: 1140px; margin: 0 auto; text-align: left; }
+  .tier-card { position: relative; padding: 36px 28px 32px; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+  .tier-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+  .tier-card:hover { transform: translateY(-6px); }
+
+  .tier-atllove { background: linear-gradient(135deg, #0a2010 0%, #050a05 100%); border-color: rgba(60,200,60,0.4); }
+  .tier-atllove::before { background: linear-gradient(90deg, #30c030, #50e050); }
+  .tier-atllove .tier-badge {
+    -webkit-font-smoothing: antialiased; background: #50a050; }
+  .tier-atllove .tier-price { color: #40e040; text-shadow: 0 0 20px rgba(60,220,60,0.5); }
+  .tier-atllove:hover { box-shadow: 0 20px 50px rgba(60,200,60,0.3); }
+
+  .tier-atlroots { background: linear-gradient(135deg, #1a0e00 0%, #080500 100%); border-color: rgba(220,140,40,0.45); }
+  .tier-atlroots::before { background: linear-gradient(90deg, #b07030, #d4944a); }
+  .tier-atlroots .tier-badge {
+    -webkit-font-smoothing: antialiased; background: linear-gradient(90deg, #b07030, #d4944a); }
+  .tier-atlroots .tier-price { color: #f0a030; text-shadow: 0 0 20px rgba(220,140,40,0.5); }
+  .tier-atlroots:hover { box-shadow: 0 20px 50px rgba(220,140,40,0.3); }
+
+  .tier-atlrise { background: linear-gradient(135deg, #080f20 0%, #050508 100%); border-color: rgba(80,140,220,0.45); }
+  .tier-atlrise::before { background: linear-gradient(90deg, #3a7fd5, #60a0f0); }
+  .tier-atlrise .tier-badge {
+    -webkit-font-smoothing: antialiased; background: #4a6fa5; }
+  .tier-atlrise .tier-price { color: #60b0ff; text-shadow: 0 0 20px rgba(80,160,255,0.5); }
+  .tier-atlrise:hover { box-shadow: 0 20px 50px rgba(80,140,220,0.35); }
+
+  .tier-atllegacy { background: linear-gradient(135deg, #201400 0%, #080600 100%); border-color: rgba(255,200,0,0.5); }
+  .tier-atllegacy::before { background: linear-gradient(90deg, #d4af37, #ffd700); }
+  .tier-atllegacy .tier-badge {
+    -webkit-font-smoothing: antialiased; background: linear-gradient(90deg, #d4af37, #ffd700); color: #000; }
+  .tier-atllegacy .tier-price { color: #ffd700; text-shadow: 0 0 20px rgba(255,200,0,0.6); }
+  .tier-atllegacy:hover { box-shadow: 0 20px 50px rgba(255,200,0,0.35); }
+
+  .tier-badge {
+    -webkit-font-smoothing: antialiased; display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 4px 12px; color: #fff; margin-bottom: 16px; }
+  .tier-name { font-family: 'Bebas Neue', sans-serif; font-size: 34px; margin-bottom: 4px; color: var(--white); letter-spacing: 2px; }
+  .tier-price { font-family: 'Bebas Neue', sans-serif; font-size: 54px; line-height: 1; margin-bottom: 24px; }
+  .tier-divider { height: 1px; background: rgba(255,255,255,0.07); margin-bottom: 20px; }
+  .tier-benefits { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .tier-benefits li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--gray); line-height: 1.5; }
+  .tier-benefits li::before { content: '✦'; color: var(--red); flex-shrink: 0; font-size: 10px; margin-top: 3px; }
+  .tier-featured-badge { position: absolute; top: 16px; right: 16px; background: var(--red); color: white; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; }
+
+  .tier-btn { display: block; width: 100%; margin-top: 8px; background: transparent; color: var(--white); font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 3px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); padding: 12px; cursor: pointer; transition: all 0.2s; text-align: center; text-decoration: none; }
+  .tier-btn:hover { background: var(--red); border-color: var(--red); }
+
+  /* FORM */
+  .form-section { padding: 80px 20px; background: linear-gradient(135deg, rgb(45,12,55) 0%, #0a0a0a 100%); border-top: 3px solid rgba(204,0,0,0.3); }
+  .form-card { max-width: 760px; margin: 0 auto; background: rgb(50,15,60); border: 1px solid rgba(204,0,0,0.25); border-top: 4px solid var(--red); padding: 52px 48px; }
+  .form-intro { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 36px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); }
+  .form-group input, .form-group select, .form-group textarea { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 15px; padding: 14px 16px; outline: none; transition: border-color 0.2s; width: 100%; -webkit-appearance: none; }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.2); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--red); background: rgba(204,0,0,0.05); }
+  .form-group select option { background: rgb(50,15,60); color: var(--white); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .submit-btn { width: 100%; margin-top: 8px; background: var(--red); color: var(--white); font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 4px; text-transform: uppercase; border: none; padding: 18px; cursor: pointer; transition: background 0.2s, box-shadow 0.2s; }
+  .submit-btn:hover { background: #e60000; box-shadow: 0 0 20px rgba(204,0,0,0.4); }
+  .payment-hold { background: rgba(204,0,0,0.08); border: 1px dashed rgba(204,0,0,0.5); padding: 20px; margin-top: 20px; text-align: center; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); }
+  .payment-hold span { color: var(--red); display: block; margin-bottom: 6px; font-size: 11px; letter-spacing: 4px; }
+  .success-msg { display: none; padding: 32px; background: rgba(0,100,0,0.15); border: 1px solid #2d7a2d; margin-top: 24px; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; color: #6dff6d; letter-spacing: 1px; text-align: center; }
+
+  footer { background: var(--purple); border-top: 3px solid var(--red); padding: 60px 20px 40px; text-align: center; }
+  .footer-tagline { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 28px; text-align: center; padding: 0 20px; }
+  .footer-contact { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 28px; }
+  .footer-contact a { color: var(--red); text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; letter-spacing: 1px; transition: color 0.2s; }
+  .footer-contact a:hover { color: rgb(240,0,0); }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); letter-spacing: 1px; text-align: center; padding: 0 20px; }
+
+  @media (max-width: 600px) { .form-card { padding: 32px 20px; } .form-grid { grid-template-columns: 1fr; } .nav-links { gap: 16px; } }
+</style>
+</head>
+<body>
+
+<nav class="nav-bar">
+  <a href="https://youtharethefutureatl.org" style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:var(--white);">YOU-TH ARE THE FUTURE</a>
+  <div class="nav-links">
+    <a href="https://youtharethefutureatl.org">Home</a>
+    <a href="youth_donation_page.html">Donate</a>
+    <a href="youth_sponsorship_page.html" class="active">Sponsor</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-divider"></div>
+  <h1 class="hero-headline">BECOME A <span>SPONSOR</span></h1>
+  <p class="hero-tagline">Guiding Youth &nbsp;|&nbsp; Strengthening Families &nbsp;|&nbsp; Transforming Communities</p>
+  <p class="hero-body">Partner with YOU-TH ARE THE FUTURE and invest in the next generation of Atlanta leaders. Your sponsorship creates lasting impact for youth and families across our communities.</p>
+</section>
+
+<!-- TIERS -->
+<section class="tiers-section">
+  <div class="tiers-header">
+    <p class="section-label">Partnership Levels</p>
+    <h2 class="section-title">SPONSORSHIP TIERS</h2>
+  </div>
+  <div class="tiers-grid">
+
+    <div class="tier-card tier-atllove">
+      <span class="tier-badge">Entry</span>
+      <div class="tier-name">ATL Love</div>
+      <div class="tier-price">$1,000</div>
+      <div class="tier-divider"></div>
+      <ul class="tier-benefits">
+        <li>Name recognition in program materials</li>
+        <li>Social media acknowledgment</li>
+        <li>Certificate of partnership</li>
+        <li>Invitation to community events</li>
+      </ul>
+      <a href="#sponsor-form" class="tier-btn" onclick="selectTier('ATL Love — $1,000')">SELECT THIS TIER</a>
+    </div>
+
+    <div class="tier-card tier-atlroots">
+      <span class="tier-badge">Community</span>
+      <div class="tier-name">ATL Roots</div>
+      <div class="tier-price">$5,000</div>
+      <div class="tier-divider"></div>
+      <ul class="tier-benefits">
+        <li>All ATL Love benefits</li>
+        <li>Logo placement on event materials</li>
+        <li>Featured in quarterly newsletter</li>
+        <li>2 VIP event tickets</li>
+        <li>Dedicated social media post</li>
+      </ul>
+      <a href="#sponsor-form" class="tier-btn" onclick="selectTier('ATL Roots — $5,000')">SELECT THIS TIER</a>
+    </div>
+
+    <div class="tier-card tier-atlrise">
+      <span class="tier-badge">Premier</span>
+      <div class="tier-name">ATL Rise</div>
+      <div class="tier-price">$15,000</div>
+      <div class="tier-divider"></div>
+      <ul class="tier-benefits">
+        <li>All ATL Roots benefits</li>
+        <li>Prominent logo on all major materials</li>
+        <li>Speaking opportunity at annual event</li>
+        <li>5 VIP event tickets</li>
+        <li>Quarterly impact report</li>
+        <li>Co-branded program opportunity</li>
+      </ul>
+      <a href="#sponsor-form" class="tier-btn" onclick="selectTier('ATL Rise — $15,000')">SELECT THIS TIER</a>
+    </div>
+
+    <div class="tier-card tier-atllegacy">
+      <span class="tier-featured-badge">Flagship</span>
+      <span class="tier-badge">Legacy</span>
+      <div class="tier-name">ATL Legacy</div>
+      <div class="tier-price">$25,000+</div>
+      <div class="tier-divider"></div>
+      <ul class="tier-benefits">
+        <li>All ATL Rise benefits</li>
+        <li>Naming rights to a program or initiative</li>
+        <li>Exclusive presenting sponsorship</li>
+        <li>10 VIP event tickets + private reception</li>
+        <li>Executive board engagement opportunity</li>
+        <li>Annual impact summit invitation</li>
+        <li>Custom partnership package</li>
+      </ul>
+      <a href="#sponsor-form" class="tier-btn" onclick="selectTier('ATL Legacy — $25,000+')">SELECT THIS TIER</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="sponsor-form">
+  <div class="form-card">
+    <p class="section-label">Partnership Inquiry</p>
+    <h2 class="section-title">SPONSOR INQUIRY</h2>
+    <p class="form-intro">Complete the form below to submit your sponsorship interest. Our team will contact you within 48 hours to discuss your partnership and next steps.</p>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label>First Name *</label>
+        <input type="text" id="firstName" placeholder="First Name" required>
+      </div>
+      <div class="form-group">
+        <label>Last Name *</label>
+        <input type="text" id="lastName" placeholder="Last Name" required>
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" id="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" id="phone" placeholder="(000) 000-0000" required>
+      </div>
+      <div class="form-group full">
+        <label>Organization / Company Name</label>
+        <input type="text" id="org" placeholder="Organization or Company Name">
+      </div>
+      <div class="form-group full">
+        <label>Sponsorship Tier Interest *</label>
+        <select id="tier" required>
+          <option value="" disabled selected>Select a tier</option>
+          <option value="ATL Love — $1,000">ATL Love — $1,000</option>
+          <option value="ATL Roots — $5,000">ATL Roots — $5,000</option>
+          <option value="ATL Rise — $15,000">ATL Rise — $15,000</option>
+          <option value="ATL Legacy — $25,000+">ATL Legacy — $25,000+</option>
+          <option value="Custom / Other">Custom / Other — Let's Talk</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label>Message / Questions (Optional)</label>
+        <textarea id="message" placeholder="Tell us about your organization and how you'd like to partner with us..."></textarea>
+      </div>
+    </div>
+
+    <!-- PAYMENT HOLD NOTICE -->
+    <div class="payment-hold">
+      <span>&#9679; Payment Processing — Coming Soon</span>
+      Submit your inquiry below. Our team will reach out with payment and contract details within 48 hours.
+    </div>
+
+    <button class="submit-btn" onclick="submitSponsor()">SUBMIT SPONSORSHIP INQUIRY</button>
+    <div class="success-msg" id="successMsg">
+      Thank you for your interest in sponsoring YOU-TH ARE THE FUTURE! A member of our team will contact you within 48 hours to finalize your partnership.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-tagline">Guiding Youth &nbsp;|&nbsp; Strengthening Families &nbsp;|&nbsp; Transforming Communities</p>
+  <div class="footer-contact">
+    <a href="mailto:unk@youtharethefutureatl.org">unk@youtharethefutureatl.org</a>
+    <a href="youth_donation_page.html">Make a Donation</a>
+    <a href="https://youtharethefutureatl.org">Main Site</a>
+  </div>
+  <p class="footer-copy">&copy; 2025 YOU-TH ARE THE FUTURE, LLC &nbsp;|&nbsp; Atlanta, Georgia &nbsp;|&nbsp; All Rights Reserved</p>
+</footer>
+
+<script>
+  function selectTier(tierValue) {
+    document.getElementById('tier').value = tierValue;
+  }
+
+  function submitSponsor() {
+    const required = ['firstName','lastName','email','phone','tier'];
+    let valid = true;
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value) { el.style.borderColor = '#cc0000'; valid = false; }
+      else el.style.borderColor = '';
+    });
+    if (!valid) return;
+
+    const name = document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const org = document.getElementById('org').value;
+    const tier = document.getElementById('tier').value;
+    const message = document.getElementById('message').value;
+
+    const body = encodeURIComponent(
+      'Sponsorship Inquiry Submitted\n\n' +
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Phone: ' + phone + '\n' +
+      'Organization: ' + org + '\n' +
+      'Tier Selected: ' + tier + '\n' +
+      'Message: ' + message
+    );
+
+    window.location.href = 'mailto:unk@youtharethefutureatl.org?subject=' + encodeURIComponent('Sponsorship Inquiry — ' + tier + ' — ' + name) + '&body=' + body;
+    document.getElementById('successMsg').style.display = 'block';
+  }
+</script>
+</body>
+</html>
