@@ -4,483 +4,195 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Donate | YOU-TH ARE THE FUTURE</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Teko:wght@400;500;600;700&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    /* LOCKED BRAND COLORS — DO NOT CHANGE */
-    /* Purple: rgb(80,32,96) | Highlight: rgb(112,32,112) | Red: rgb(240,0,0) */
-    --purple: rgb(80,32,96);
-    --red: rgb(240,0,0);
-    --black: #0a0a0a;
-    --white: #f5f5f5;
-    --gray: #c0c0c0;
-  }
+  :root { --purple: rgb(80,32,96); --red: rgb(240,0,0); --black: #0a0a0a; --white: #f5f5f5; --gray: #c0c0c0; --dark-purple: rgb(30,10,40); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; overflow-x: hidden; }
 
-  /* HERO */
-  .hero {
-    position: relative;
-    background: linear-gradient(180deg, rgb(40,10,50) 0%, var(--purple) 60%, rgb(40,10,50) 100%);
-    padding: 40px 20px 48px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .hero-logo {
-    width: min(340px, 85vw);
-    margin-bottom: 20px;
-    border-radius: 8px;
-  }
-  .hero-tagline {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 20px;
-  }
-  .hero-divider {
-    width: min(500px, 90vw);
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--red), transparent);
-    margin-bottom: 28px;
-  }
-  .hero-headline {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(52px, 12vw, 96px);
-    letter-spacing: 4px;
-    line-height: 1;
-    margin-bottom: 20px;
-  }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 8px 28px; background: #0a0a0a; border-bottom: 2px solid var(--red); }
+  .nav-logo-wrap { background: #0a0a0a; display: flex; align-items: center; }
+  nav img.nav-logo { height: 68px; width: auto; display: block; mix-blend-mode: lighten; }
+  .nav-links { display: flex; gap: 22px; list-style: none; align-items: center; }
+  .nav-links a { color: var(--white); text-decoration: none; font-family: 'Teko', sans-serif; font-weight: 500; font-size: 1.2rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; position: relative; padding-bottom: 2px; }
+  .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--red); transform: scaleX(0); transition: transform 0.2s; }
+  .nav-links a:hover { color: var(--red); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links .nav-cta { background: var(--red); color: var(--white) !important; padding: 7px 20px; clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%); }
+  .nav-links .nav-cta::after { display: none; }
+  .nav-links .nav-cta:hover { background: #cc0000; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: var(--white); }
+  .mobile-menu { display: none; position: fixed; top: 86px; left: 0; right: 0; background: rgba(10,10,10,0.99); padding: 24px; flex-direction: column; gap: 18px; z-index: 99; border-bottom: 2px solid var(--red); }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--white); text-decoration: none; font-family: 'Teko', sans-serif; font-weight: 500; font-size: 1.6rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .mobile-menu a:hover { color: var(--red); }
+
+  .hero { position: relative; padding: 120px 20px 60px; background: linear-gradient(180deg, rgb(40,10,50) 0%, var(--purple) 60%, rgb(40,10,50) 100%); display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .hero-logo { width: min(420px, 85vw); margin-bottom: 20px; filter: drop-shadow(0 0 30px rgba(240,0,0,0.3)); }
+  .hero-tagline { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); margin-bottom: 16px; }
+  .hero-divider { width: 60px; height: 3px; background: var(--red); margin: 16px auto; }
+  .hero-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 8vw, 5rem); color: var(--white); line-height: 1; margin-bottom: 12px; }
   .hero-headline span { color: var(--red); }
-  .hero-body {
-    max-width: 640px;
-    font-size: 17px;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.85);
-    text-align: center;
-  }
+  .hero-body { font-size: clamp(1rem, 2.5vw, 1.15rem); color: var(--gray); max-width: 600px; line-height: 1.75; }
 
-  /* PRIORITY ITEMS */
-  .priority-section {
-    background: linear-gradient(135deg, #1a0000 0%, #0a0a0a 100%);
-    border-top: 3px solid var(--red);
-    border-bottom: 3px solid rgba(204,0,0,0.3);
-    padding: 48px 20px;
-    text-align: center;
-  }
-  .section-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 12px;
-  }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(36px, 7vw, 60px);
-    letter-spacing: 3px;
-    margin-bottom: 36px;
-  }
-  .priority-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-    max-width: 960px;
-    margin: 0 auto;
-  }
-  .priority-card {
-    background: rgba(204,0,0,0.06);
-    border: 1px solid rgba(204,0,0,0.3);
-    border-top: 3px solid var(--red);
-    padding: 28px 20px;
-    text-align: center;
-  }
-  .priority-card .badge {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 6px;
-  }
-  .priority-card h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 10px;
-  }
-  .priority-card p {
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--gray);
-  }
+  .priority-section { padding: 64px 20px; background: var(--black); text-align: center; }
+  .section-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--white); margin-bottom: 32px; }
+  .priority-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+  .priority-card { background: rgba(80,32,96,0.15); border: 1px solid var(--red); border-top: 3px solid var(--red); padding: 28px 22px; text-align: center; transition: transform 0.2s; }
+  .priority-card:hover { transform: translateY(-4px); }
+  .badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+  .priority-card h3 { font-family: 'Teko', sans-serif; font-weight: 600; font-size: 1.4rem; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+  .priority-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
 
-  /* FORM SECTION */
-  .form-section {
-    padding: 60px 20px 80px;
-    background: var(--black);
-  }
-  .form-section .section-label { text-align: center; }
-  .form-section .section-title { text-align: center; margin-bottom: 12px; }
-  .form-card {
-    max-width: 680px;
-    margin: 0 auto;
-    background: rgb(50,15,60);
-    border: 1px solid rgba(204,0,0,0.25);
-    border-top: 4px solid var(--red);
-    padding: 48px 40px;
-  }
-  .form-intro {
-    font-size: 15px;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.75);
-    margin-bottom: 32px;
-  }
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  .form-group label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gray);
-  }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: var(--white);
-    font-family: 'Barlow', sans-serif;
-    font-size: 15px;
-    padding: 14px 16px;
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-    -webkit-appearance: none;
-  }
-  .form-group input::placeholder,
-  .form-group textarea::placeholder { color: rgba(255,255,255,0.2); }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus { border-color: var(--red); background: rgba(204,0,0,0.05); }
-  .form-group select option { background: rgb(50,15,60); color: var(--white); }
-  .form-group textarea { resize: vertical; min-height: 110px; }
+  .categories-section { padding: 64px 20px; background: linear-gradient(to bottom, var(--black), var(--dark-purple)); text-align: center; }
+  .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+  .category-card { background: rgba(10,10,10,0.8); border: 1px solid var(--red); border-top: 3px solid var(--red); padding: 28px 22px; text-align: center; transition: transform 0.2s; }
+  .category-card:hover { transform: translateY(-4px); }
+  .category-card h3 { font-family: 'Teko', sans-serif; font-weight: 600; font-size: 1.4rem; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+  .category-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
 
-  .checkbox-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 4px;
-  }
-  .checkbox-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 14px 16px;
-    cursor: pointer;
-    transition: border-color 0.2s;
-  }
-  .checkbox-item:hover { border-color: var(--red); }
-  .checkbox-item input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    accent-color: var(--red);
-    flex-shrink: 0;
-  }
-  .checkbox-item span {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 15px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--white);
-  }
+  .form-section { padding: 64px 20px; background: var(--dark-purple); text-align: center; }
+  .form-wrap { background: rgba(80,32,96,0.15); border: 1px solid rgba(240,0,0,0.3); border-top: 3px solid var(--red); padding: 40px 32px; max-width: 640px; margin: 32px auto 0; text-align: left; }
+  .form-intro { font-size: 1rem; color: var(--gray); line-height: 1.75; margin-bottom: 28px; }
+  .form-group { margin-bottom: 20px; }
+  .form-label { display: block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
+  .form-input, .form-select, .form-textarea { width: 100%; background: rgba(10,10,10,0.8); border: 1px solid rgba(80,32,96,0.6); color: var(--white); padding: 12px 16px; font-family: 'Barlow', sans-serif; font-size: 1rem; transition: border-color 0.2s; outline: none; }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--red); }
+  .form-textarea { min-height: 120px; resize: vertical; }
+  .form-select option { background: #1a0a24; }
+  .checkbox-group { display: flex; flex-direction: column; gap: 10px; }
+  .checkbox-label { display: flex; align-items: center; gap: 12px; cursor: pointer; padding: 12px 16px; background: rgba(10,10,10,0.6); border: 1px solid rgba(80,32,96,0.4); transition: border-color 0.2s; }
+  .checkbox-label:hover { border-color: var(--red); }
+  .checkbox-label input { width: 18px; height: 18px; accent-color: var(--red); cursor: pointer; flex-shrink: 0; }
+  .checkbox-label span { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); }
+  .btn-submit { width: 100%; background: var(--red); color: var(--white); font-family: 'Teko', sans-serif; font-weight: 600; font-size: 1.3rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 16px; border: none; cursor: pointer; margin-top: 28px; clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%); transition: background 0.2s, transform 0.2s; }
+  .btn-submit:hover { background: #cc0000; transform: translateY(-2px); }
 
-  .radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 4px;
-  }
-  .radio-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 14px 16px;
-    cursor: pointer;
-    transition: border-color 0.2s;
-  }
-  .radio-item:hover { border-color: var(--red); }
-  .radio-item input[type="radio"] {
-    width: 18px;
-    height: 18px;
-    accent-color: var(--red);
-    flex-shrink: 0;
-  }
-  .radio-item span {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 15px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--white);
-  }
+  footer { background: #050505; border-top: 2px solid var(--red); padding: 40px 24px 28px; text-align: center; }
+  .footer-logo-wrap { background: #050505; display: inline-flex; align-items: center; margin-bottom: 16px; }
+  footer img.footer-logo { height: 60px; width: auto; display: block; mix-blend-mode: lighten; }
+  .footer-info { font-size: 0.88rem; color: var(--gray); line-height: 2; margin-bottom: 16px; }
+  .footer-info a { color: var(--red); text-decoration: none; }
+  .footer-info a:hover { color: var(--white); }
+  .footer-bottom { font-size: 0.75rem; color: rgba(192,192,192,0.3); border-top: 1px solid rgba(255,255,255,0.06); padding-top: 16px; margin-top: 16px; }
 
-  .submit-btn {
-    width: 100%;
-    margin-top: 12px;
-    background: var(--red);
-    color: var(--white);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    border: none;
-    padding: 20px;
-    cursor: pointer;
-    transition: background 0.2s, box-shadow 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .submit-btn:hover { background: #e60000; box-shadow: 0 0 24px rgba(204,0,0,0.5); }
-  .submit-btn::after { content: '✦'; font-size: 16px; }
-
-  .success-msg {
-    display: none;
-    padding: 28px;
-    background: rgba(0,100,0,0.15);
-    border: 1px solid #2d7a2d;
-    margin-top: 20px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 17px;
-    color: #6dff6d;
-    letter-spacing: 1px;
-    text-align: center;
-    line-height: 1.6;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--purple);
-    border-top: 3px solid var(--red);
-    padding: 48px 20px 36px;
-    text-align: center;
-  }
-  .footer-tagline {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 24px;
-  }
-  .footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
-    margin-bottom: 24px;
-  }
-  .footer-links a {
-    color: var(--white);
-    text-decoration: none;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 14px;
-    letter-spacing: 1px;
-    transition: color 0.2s;
-  }
-  .footer-links a:hover { color: rgb(240,0,0); }
-  .footer-copy {
-    font-size: 12px;
-    color: rgba(255,255,255,0.2);
-    letter-spacing: 1px;
-  }
-
-  @media (max-width: 600px) {
-    .form-card { padding: 32px 20px; }
-  }
+  @media (max-width: 700px) { .nav-links { display: none; } .hamburger { display: flex; } }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
+<nav>
+  <div class="nav-logo-wrap">
+    <img src="secondary_logo_transparent.png" alt="YOU-TH Are The Future" class="nav-logo" />
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#mission">Who We Are</a></li>
+    <li><a href="index.html#founder">Our Story</a></li>
+    <li><a href="index.html#whatwedo">What We Do</a></li>
+    <li><a href="youth_donation_page.html">Donate</a></li>
+    <li><a href="youth_sponsorship_page.html" class="nav-cta">Sponsor</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="index.html#mission" onclick="toggleMenu()">Who We Are</a>
+  <a href="youth_donation_page.html" onclick="toggleMenu()">Donate</a>
+  <a href="youth_sponsorship_page.html" onclick="toggleMenu()">Sponsor</a>
+</div>
+
 <section class="hero">
-  <img class="hero-logo" src="primary_logo.png" alt="YOU-TH ARE THE FUTURE" onerror="this.style.display='none'">
+  <img class="hero-logo" src="primary_logo.png" alt="YOU-TH ARE THE FUTURE" />
   <p class="hero-tagline">Guiding Youth &bull; Strengthening Families &bull; Transforming Communities</p>
   <div class="hero-divider"></div>
   <h1 class="hero-headline">DONATE <span>GOODS</span></h1>
   <p class="hero-body">Every item donated goes directly to families and youth in our community. Whether you can drop it off or need us to pick it up — we will make it work. Nothing is too small. Every contribution matters.</p>
 </section>
 
-<!-- PRIORITY ITEMS -->
 <section class="priority-section">
   <p class="section-label">Always Needed</p>
   <h2 class="section-title">PRIORITY ITEMS</h2>
   <div class="priority-grid">
-    <div class="priority-card">
-      <p class="badge">Urgent</p>
-      <h3>Baby Items</h3>
-      <p>Diapers, wipes, formula, baby clothes (all sizes), car seats, strollers, cribs</p>
-    </div>
-    <div class="priority-card">
-      <p class="badge">Urgent</p>
-      <h3>Personal Care</h3>
-      <p>Soap, shampoo, toothbrushes, toothpaste, deodorant, feminine hygiene products</p>
-    </div>
-    <div class="priority-card">
-      <h3>Clothing</h3>
-      <p>All sizes welcome — children, youth, and adult clothing in good condition</p>
-    </div>
-    <div class="priority-card">
-      <h3>Food</h3>
-      <p>Non-perishable items, canned goods, dry goods, baby food and formula</p>
-    </div>
-    <div class="priority-card">
-      <h3>Toys</h3>
-      <p>New or gently used toys for all ages — books, games, and educational items welcome</p>
-    </div>
-    <div class="priority-card">
-      <h3>Furniture</h3>
-      <p>Beds, dressers, tables, chairs — gently used furniture in good condition</p>
-    </div>
+    <div class="priority-card"><p class="badge">Urgent</p><h3>Baby Items</h3><p>Diapers, wipes, formula, baby clothes (all sizes), car seats, strollers, cribs</p></div>
+    <div class="priority-card"><p class="badge">Urgent</p><h3>Personal Care</h3><p>Soap, shampoo, toothbrushes, toothpaste, deodorant, feminine hygiene products</p></div>
   </div>
 </section>
 
-<!-- FORM -->
+<section class="categories-section">
+  <p class="section-label">What We Accept</p>
+  <h2 class="section-title">DONATION CATEGORIES</h2>
+  <div class="categories-grid">
+    <div class="category-card"><h3>Clothing</h3><p>All sizes welcome — children, youth, and adult clothing</p></div>
+    <div class="category-card"><h3>Food</h3><p>Non-perishable items, canned goods, dry goods, baby food and formula</p></div>
+    <div class="category-card"><h3>Toys</h3><p>New or gently used toys for all ages — books, games, and educational items all welcome</p></div>
+    <div class="category-card"><h3>Furniture</h3><p>Beds, dressers, tables, chairs — gently used furniture in good condition</p></div>
+  </div>
+</section>
+
 <section class="form-section">
-  <p class="section-label">Make a Difference</p>
+  <p class="section-label">Make A Difference</p>
   <h2 class="section-title">SUBMIT YOUR DONATION</h2>
-  <div class="form-card">
-    <p class="form-intro">Fill out the form below and our team will follow up within 24–48 hours to coordinate your donation. We serve within a 25-mile radius of Atlanta for pickups.</p>
-
-    <div class="form-group">
-      <label>First Name *</label>
-      <input type="text" id="firstName" placeholder="First name" required>
-    </div>
-    <div class="form-group">
-      <label>Last Name *</label>
-      <input type="text" id="lastName" placeholder="Last name" required>
-    </div>
-    <div class="form-group">
-      <label>Email Address *</label>
-      <input type="email" id="email" placeholder="your@email.com" required>
-    </div>
-    <div class="form-group">
-      <label>Phone Number *</label>
-      <input type="tel" id="phone" placeholder="(404) 000-0000" required>
-    </div>
-
-    <div class="form-group">
-      <label>What Are You Donating? (Select All That Apply)</label>
-      <div class="checkbox-group">
-        <label class="checkbox-item"><input type="checkbox" value="Baby Items"><span>Baby Items</span></label>
-        <label class="checkbox-item"><input type="checkbox" value="Personal Care"><span>Personal Care</span></label>
-        <label class="checkbox-item"><input type="checkbox" value="Clothing"><span>Clothing</span></label>
-        <label class="checkbox-item"><input type="checkbox" value="Food"><span>Food</span></label>
-        <label class="checkbox-item"><input type="checkbox" value="Toys"><span>Toys</span></label>
-        <label class="checkbox-item"><input type="checkbox" value="Furniture"><span>Furniture</span></label>
-        <label class="checkbox-item"><input type="checkbox" value="Other"><span>Other</span></label>
+  <div class="form-wrap">
+    <p class="form-intro">Fill out the form below and our team will follow up within 24-48 hours to coordinate your donation. We can serve within a 25-mile radius of Atlanta for pickups.</p>
+    <form action="https://formspree.io/f/seven@youtharethefutureatl.org" method="POST">
+      <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" name="first_name" placeholder="First name" required /></div>
+      <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" name="last_name" placeholder="Last name" required /></div>
+      <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" name="email" placeholder="your@email.com" required /></div>
+      <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" type="tel" name="phone" placeholder="(404) 000-0000" /></div>
+      <div class="form-group">
+        <label class="form-label">What Are You Donating? (Select All That Apply)</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label"><input type="checkbox" name="donation_type" value="Baby Items" /><span>Baby Items</span></label>
+          <label class="checkbox-label"><input type="checkbox" name="donation_type" value="Personal Care" /><span>Personal Care</span></label>
+          <label class="checkbox-label"><input type="checkbox" name="donation_type" value="Clothing" /><span>Clothing</span></label>
+          <label class="checkbox-label"><input type="checkbox" name="donation_type" value="Food" /><span>Food</span></label>
+          <label class="checkbox-label"><input type="checkbox" name="donation_type" value="Toys" /><span>Toys</span></label>
+          <label class="checkbox-label"><input type="checkbox" name="donation_type" value="Furniture" /><span>Furniture</span></label>
+          <label class="checkbox-label"><input type="checkbox" name="donation_type" value="Other" /><span>Other</span></label>
+        </div>
       </div>
-    </div>
-
-    <div class="form-group">
-      <label>Describe Your Donation</label>
-      <textarea id="description" placeholder="Please describe the items, quantities, sizes, and condition..."></textarea>
-    </div>
-
-    <div class="form-group">
-      <label>Drop Off or Pick Up?</label>
-      <div class="radio-group">
-        <label class="radio-item"><input type="radio" name="logistics" value="I will drop it off"><span>I Will Drop It Off</span></label>
-        <label class="radio-item"><input type="radio" name="logistics" value="I need a pick up"><span>I Need a Pick Up</span></label>
+      <div class="form-group"><label class="form-label">Describe Your Donation</label><textarea class="form-textarea" name="description" placeholder="Please describe the items, quantities, sizes, and condition..."></textarea></div>
+      <div class="form-group">
+        <label class="form-label">Drop Off or Pick Up?</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label"><input type="checkbox" name="logistics" value="Drop Off" /><span>I Will Drop It Off</span></label>
+          <label class="checkbox-label"><input type="checkbox" name="logistics" value="Pick Up" /><span>I Need A Pick Up</span></label>
+        </div>
       </div>
-    </div>
-
-    <div class="form-group">
-      <label>Best Time to Reach You</label>
-      <select id="bestTime">
-        <option value="" disabled selected>Select a time...</option>
-        <option>Morning (8am – 12pm)</option>
-        <option>Afternoon (12pm – 5pm)</option>
-        <option>Evening (5pm – 8pm)</option>
-        <option>Weekends Only</option>
-        <option>Anytime</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Additional Notes (Optional)</label>
-      <textarea id="notes" placeholder="Any other details we should know..."></textarea>
-    </div>
-
-    <button class="submit-btn" onclick="submitDonation()">SUBMIT DONATION</button>
-    <div class="success-msg" id="successMsg">
-      Thank you! Your donation submission has been received.<br>Our team will contact you within 24–48 hours to coordinate pickup or drop-off.
-    </div>
+      <div class="form-group">
+        <label class="form-label">Best Time To Reach You</label>
+        <select class="form-select" name="best_time">
+          <option value="" disabled selected>Select a time...</option>
+          <option>Morning (8am-12pm)</option>
+          <option>Afternoon (12pm-5pm)</option>
+          <option>Evening (5pm-8pm)</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Additional Notes (Optional)</label><textarea class="form-textarea" name="notes" placeholder="Any other details we should know..."></textarea></div>
+      <button type="submit" class="btn-submit">SUBMIT DONATION &#9670;</button>
+    </form>
   </div>
 </section>
 
 <footer>
-  <p class="footer-tagline">Guiding Youth &bull; Strengthening Families &bull; Transforming Communities</p>
-  <div class="footer-links">
-    <a href="mailto:seven@youtharethefutureatl.org">seven@youtharethefutureatl.org</a>
-    <a href="youth_sponsorship_page.html">Become a Sponsor</a>
-    <a href="https://youtharethefutureatl.org">Main Site</a>
+  <div class="footer-logo-wrap">
+    <img src="secondary_logo_transparent.png" alt="YOU-TH Are The Future" class="footer-logo" />
   </div>
-  <p class="footer-copy">&copy; 2026 YOU-TH ARE THE FUTURE, LLC &nbsp;|&nbsp; Atlanta, Georgia &nbsp;|&nbsp; All Rights Reserved</p>
+  <div class="footer-info">
+    Atlanta, Georgia &nbsp;|&nbsp; <a href="tel:4044921579">404.492.1579</a><br />
+    <a href="mailto:seven@youtharethefutureatl.org">seven@youtharethefutureatl.org</a><br />
+    General Inquiries, Resources &amp; Donations
+  </div>
+  <div class="footer-bottom">&copy; 2026 YOU-TH Are The Future. Atlanta, Georgia. All rights reserved.</div>
 </footer>
 
 <script>
-function submitDonation() {
-  const firstName = document.getElementById('firstName').value;
-  const lastName = document.getElementById('lastName').value;
-  const email = document.getElementById('email').value;
-  const phone = document.getElementById('phone').value;
-
-  if (!firstName || !lastName || !email || !phone) {
-    alert('Please fill in all required fields.');
-    return;
-  }
-
-  const items = [...document.querySelectorAll('.checkbox-group input:checked')].map(c => c.value).join(', ') || 'Not specified';
-  const logistics = document.querySelector('input[name="logistics"]:checked');
-  const logisticsVal = logistics ? logistics.value : 'Not specified';
-  const bestTime = document.getElementById('bestTime').value || 'Not specified';
-  const description = document.getElementById('description').value;
-  const notes = document.getElementById('notes').value;
-
-  const subject = encodeURIComponent('Donation Submission — ' + firstName + ' ' + lastName);
-  const body = encodeURIComponent(
-    'DONATION SUBMISSION\n\n' +
-    'Name: ' + firstName + ' ' + lastName + '\n' +
-    'Email: ' + email + '\n' +
-    'Phone: ' + phone + '\n\n' +
-    'Items Donating: ' + items + '\n' +
-    'Description: ' + description + '\n\n' +
-    'Drop Off or Pick Up: ' + logisticsVal + '\n' +
-    'Best Time to Reach: ' + bestTime + '\n\n' +
-    'Additional Notes: ' + notes
-  );
-
-  window.location.href = 'mailto:seven@youtharethefutureatl.org?subject=' + subject + '&body=' + body;
-  document.getElementById('successMsg').style.display = 'block';
-}
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
 </script>
 </body>
 </html>
