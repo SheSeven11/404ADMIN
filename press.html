@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Press & Features | YOU-TH ARE THE FUTURE</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Teko:wght@400;500;600;700&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --purple: rgb(80,32,96); --red: rgb(240,0,0); --black: #0a0a0a; --white: #f5f5f5; --gray: #c0c0c0; --dark-purple: rgb(30,10,40); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 8px 28px; background: #0a0a0a; border-bottom: 2px solid var(--red); }
+  .nav-logo-wrap { background: #0a0a0a; display: flex; align-items: center; }
+  nav img.nav-logo { height: 68px; width: auto; display: block; mix-blend-mode: lighten; }
+  .nav-links { display: flex; gap: 22px; list-style: none; align-items: center; }
+  .nav-links a { color: var(--white); text-decoration: none; font-family: 'Teko', sans-serif; font-weight: 500; font-size: 1.2rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; position: relative; padding-bottom: 2px; }
+  .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--red); transform: scaleX(0); transition: transform 0.2s; }
+  .nav-links a:hover { color: var(--red); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links .nav-cta { background: var(--red); color: var(--white) !important; padding: 7px 20px; clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%); }
+  .nav-links .nav-cta::after { display: none; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: var(--white); }
+  .mobile-menu { display: none; position: fixed; top: 86px; left: 0; right: 0; background: rgba(10,10,10,0.99); padding: 24px; flex-direction: column; gap: 18px; z-index: 99; border-bottom: 2px solid var(--red); }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--white); text-decoration: none; font-family: 'Teko', sans-serif; font-weight: 500; font-size: 1.6rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .mobile-menu a:hover { color: var(--red); }
+
+  .hero { padding: 110px 20px 48px; background: linear-gradient(180deg, rgb(40,10,50) 0%, var(--purple) 60%, rgb(40,10,50) 100%); display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .hero img.hero-logo { width: min(380px, 85vw); margin-bottom: 16px; filter: drop-shadow(0 0 30px rgba(240,0,0,0.3)); }
+  .hero-divider { width: 60px; height: 3px; background: var(--red); margin: 14px auto; }
+  .hero-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.4rem, 7vw, 4rem); color: var(--white); line-height: 1; margin-bottom: 10px; }
+  .hero-headline span { color: var(--red); }
+  .hero-body { font-size: clamp(0.9rem, 2vw, 1rem); color: var(--gray); max-width: 560px; line-height: 1.75; }
+
+  /* PRESS SECTION */
+  .press-section { padding: 64px 20px; background: var(--dark-purple); }
+  .press-inner { max-width: 860px; margin: 0 auto; }
+  .section-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; text-align: center; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--white); margin-bottom: 40px; text-align: center; }
+
+  .press-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+
+  .press-card { background: rgba(10,10,10,0.7); border: 1px solid rgba(80,32,96,0.5); border-top: 3px solid var(--red); padding: 28px 24px; text-decoration: none; color: var(--white); display: block; transition: transform 0.2s, border-color 0.2s; }
+  .press-card:hover { transform: translateY(-4px); border-color: rgba(240,0,0,0.6); }
+  .press-card.placeholder { border-top-color: var(--purple); border-color: rgba(80,32,96,0.3); cursor: default; }
+  .press-card.placeholder:hover { transform: none; border-color: rgba(80,32,96,0.3); }
+
+  .press-outlet { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
+  .press-card.placeholder .press-outlet { color: var(--purple); }
+  .press-date { font-size: 0.78rem; color: rgba(192,192,192,0.5); margin-bottom: 12px; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.1em; }
+  .press-title { font-family: 'Teko', sans-serif; font-weight: 600; font-size: 1.25rem; color: var(--white); margin-bottom: 10px; line-height: 1.2; letter-spacing: 0.04em; }
+  .press-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.65; margin-bottom: 16px; }
+  .press-link { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); }
+  .press-card.placeholder .press-link { color: rgba(192,192,192,0.3); }
+  .coming-badge { display: inline-block; background: rgba(80,32,96,0.4); border: 1px solid rgba(80,32,96,0.6); color: var(--gray); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 10px; margin-bottom: 12px; }
+
+  /* FOOTER */
+  footer { background: #050505; border-top: 2px solid var(--red); padding: 40px 24px 28px; text-align: center; }
+  .footer-logo-wrap { background: #050505; display: inline-flex; align-items: center; margin-bottom: 16px; }
+  footer img.footer-logo { height: 60px; width: auto; display: block; mix-blend-mode: lighten; }
+  .footer-info { font-size: 0.88rem; color: var(--gray); line-height: 2; margin-bottom: 16px; }
+  .footer-info a { color: var(--red); text-decoration: none; }
+  .footer-info a:hover { color: var(--white); }
+  .footer-bottom { font-size: 0.75rem; color: rgba(192,192,192,0.3); border-top: 1px solid rgba(255,255,255,0.06); padding-top: 16px; margin-top: 16px; }
+
+  @media (max-width: 700px) { .nav-links { display: none; } .hamburger { display: flex; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo-wrap">
+    <img src="secondary_logo_transparent.png" alt="YOU-TH Are The Future" class="nav-logo" />
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#mission">Who We Are</a></li>
+    <li><a href="index.html#founder">Our Story</a></li>
+    <li><a href="youth_donation_page.html">Donate</a></li>
+    <li><a href="youth_sponsorship_page.html" class="nav-cta">Sponsor</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="index.html#mission" onclick="toggleMenu()">Who We Are</a>
+  <a href="youth_donation_page.html" onclick="toggleMenu()">Donate</a>
+  <a href="youth_sponsorship_page.html" onclick="toggleMenu()">Sponsor</a>
+  <a href="press.html" onclick="toggleMenu()">Press &amp; Features</a>
+  <a href="legal.html" onclick="toggleMenu()">Legal &amp; Compliance</a>
+</div>
+
+<section class="hero">
+  <img src="primary_logo.png" alt="YOU-TH ARE THE FUTURE" class="hero-logo" />
+  <div class="hero-divider"></div>
+  <h1 class="hero-headline">PRESS &amp; <span>FEATURES</span></h1>
+  <p class="hero-body">The work speaks for itself. Here's where the world has taken notice.</p>
+</section>
+
+<section class="press-section">
+  <div class="press-inner">
+    <p class="section-label">In The News</p>
+    <h2 class="section-title">MEDIA COVERAGE</h2>
+    <div class="press-grid">
+
+      <!-- NY TIMES -->
+      <a href="https://www.nytimes.com/2026/04/25/headway/violent-crime-intervention-funding-cuts.html" target="_blank" class="press-card">
+        <p class="press-outlet">The New York Times</p>
+        <p class="press-date">April 25, 2026</p>
+        <h3 class="press-title">Violent Crime Intervention & Funding Cuts</h3>
+        <p class="press-desc">YOU-TH ARE THE FUTURE and the critical work of community-based violence intervention featured in The New York Times Headway section.</p>
+        <span class="press-link">Read the Article &#8594;</span>
+      </a>
+
+      <!-- REVOLT / BIG FACTS - CLIP 1 -->
+      <a href="https://www.instagram.com/reel/DZiKMXDxgnb/?igsh=MTFudDkzMTJ5dmF0NQ==" target="_blank" class="press-card">
+        <p class="press-outlet">Revolt &nbsp;|&nbsp; Big Facts Podcast</p>
+        <p class="press-date">June 2026</p>
+        <h3 class="press-title">How to Get Atlanta Back to Atlanta</h3>
+        <p class="press-desc">Featured on the Big Facts podcast at Revolt — real talk about community, accountability, and what it actually takes to bring Atlanta back to itself.</p>
+        <span class="press-link">Watch on Instagram &#8594;</span>
+      </a>
+
+      <!-- REVOLT CLIP 2 -->
+      <a href="https://www.instagram.com/reel/DZh3Jl1x6i5/?igsh=MTdsb3pxczFoMzN2bw==" target="_blank" class="press-card">
+        <p class="press-outlet">Revolt &nbsp;|&nbsp; Big Facts Podcast</p>
+        <p class="press-date">June 2026</p>
+        <h3 class="press-title">Big Facts — Extended Feature</h3>
+        <p class="press-desc">Additional coverage from the Revolt Big Facts session — more of the conversation on youth, community, and the mission of YOU-TH ARE THE FUTURE.</p>
+        <span class="press-link">Watch on Instagram &#8594;</span>
+      </a>
+
+      <!-- REVOLT CLIP 3 -->
+      <a href="https://www.instagram.com/reel/DZdaVgHSUDc/?igsh=MTR5NTh4ZDY4aDUyNQ==" target="_blank" class="press-card">
+        <p class="press-outlet">Revolt &nbsp;|&nbsp; Big Facts Podcast</p>
+        <p class="press-date">June 2026</p>
+        <h3 class="press-title">Big Facts — Community Impact</h3>
+        <p class="press-desc">A closer look at the community impact discussion from Revolt's Big Facts podcast featuring YOU-TH ARE THE FUTURE.</p>
+        <span class="press-link">Watch on Instagram &#8594;</span>
+      </a>
+
+      <!-- YOUTUBE FULL EPISODE -->
+      <a href="https://youtu.be/e_cY4_pjyPw?si=F2zegvEydyMlixVN" target="_blank" class="press-card">
+        <p class="press-outlet">YouTube &nbsp;|&nbsp; Big Facts Podcast</p>
+        <p class="press-date">June 2026</p>
+        <h3 class="press-title">Full Episode — Big Facts Podcast</h3>
+        <p class="press-desc">Watch the full Big Facts podcast episode featuring YOU-TH ARE THE FUTURE on YouTube.</p>
+        <span class="press-link">Watch on YouTube &#8594;</span>
+      </a>
+
+      <!-- NEWS PLACEHOLDER -->
+      <div class="press-card placeholder">
+        <span class="coming-badge">Coming Soon</span>
+        <p class="press-outlet">News</p>
+        <p class="press-date">Upcoming</p>
+        <h3 class="press-title">Television News Feature</h3>
+        <p class="press-desc">An upcoming television news interview featuring YOU-TH ARE THE FUTURE. Check back for the full segment link.</p>
+        <span class="press-link">Link Coming Soon</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo-wrap">
+    <img src="secondary_logo_transparent.png" alt="YOU-TH Are The Future" class="footer-logo" />
+  </div>
+  <div class="footer-info">
+    Atlanta, Georgia &nbsp;|&nbsp; <a href="tel:4044921579">404.492.1579</a><br />
+    <a href="mailto:seven@youtharethefutureatl.org">seven@youtharethefutureatl.org</a>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 YOU-TH Are The Future, Inc. Atlanta, Georgia. All rights reserved.<br />
+    A registered 501(c)(3) nonprofit corporation in the State of Georgia. &nbsp;|&nbsp;
+    <a href="legal.html" style="color:rgba(192,192,192,0.3); text-decoration:none;">Legal &amp; Compliance</a>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+</script>
+</body>
+</html>
